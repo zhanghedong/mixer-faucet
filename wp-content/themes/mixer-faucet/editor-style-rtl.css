@@ -8,7 +8,7 @@ html .mceContentBody {
 	direction: rtl;
 	unicode-bidi: embed;
 	float: right;
-	width: 584px;
+	max-width: 584px;
 }
 * {
 	font-family: Arial, Tahoma, sans-serif;

@@ -15,14 +15,14 @@
  */
 
 // Enqueue showcase script for the slider
-wp_enqueue_script( 'twentyeleven-showcase', get_template_directory_uri() . '/js/showcase.js', array( 'jquery' ), '2011-04-28' );
+wp_enqueue_script( 'basket-showcase', get_template_directory_uri() . '/js/showcase.js', array( 'jquery' ), '2011-04-28' );
 
 get_header(); ?>
 
 		<div id="primary" class="showcase">
 			<div id="content" role="main">
 
-				<?php while ( have_posts() ) : the_post(); ?>
+				<?php the_post(); ?>
 
 				<?php
 					/**
@@ -32,8 +32,6 @@ get_header(); ?>
 					if ( '' != get_the_content() )
 						get_template_part( 'content', 'intro' );
 				?>
-
-				<?php endwhile; ?>
 
 				<?php
 					/**
@@ -69,7 +67,7 @@ get_header(); ?>
 					?>
 
 				<div class="featured-posts">
-					<h1 class="showcase-heading"><?php _e( 'Featured Post', 'twentyeleven' ); ?></h1>
+					<h1 class="showcase-heading"><?php _e( 'Featured Post', 'basket' ); ?></h1>
 
 				<?php
 					// Let's roll.
@@ -112,7 +110,7 @@ get_header(); ?>
 								else
 									$thumbnail_size = 'small-feature';
 								?>
-								<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_post_thumbnail( $thumbnail_size ); ?></a>
+								<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'basket' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_post_thumbnail( $thumbnail_size ); ?></a>
 								<?php
 							}
 						?>
@@ -142,7 +140,7 @@ get_header(); ?>
 							else
 								$class = '';
 				    	?>
-						<li><a href="#featured-post-<?php echo $counter_slider; ?>" title="<?php printf( esc_attr__( 'Featuring: %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" <?php echo $class; ?>></a></li>
+						<li><a href="#featured-post-<?php echo $counter_slider; ?>" title="<?php printf( esc_attr__( 'Featuring: %s', 'basket' ), the_title_attribute( 'echo=0' ) ); ?>" <?php echo $class; ?>></a></li>
 					<?php endwhile;	?>
 					</ul>
 				</nav>
@@ -152,7 +150,7 @@ get_header(); ?>
 				<?php endif; // End check for sticky posts. ?>
 
 				<section class="recent-posts">
-					<h1 class="showcase-heading"><?php _e( 'Recent Posts', 'twentyeleven' ); ?></h1>
+					<h1 class="showcase-heading"><?php _e( 'Recent Posts', 'basket' ); ?></h1>
 
 					<?php
 
@@ -191,9 +189,9 @@ get_header(); ?>
 					while ( $recent->have_posts() ) : $recent->the_post(); ?>
 
 						<li class="entry-title">
-							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyeleven' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'basket' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
 							<span class="comments-link">
-								<?php comments_popup_link( '<span class="leave-reply">' . __( 'Leave a reply', 'twentyeleven' ) . '</span>', __( '<b>1</b> Reply', 'twentyeleven' ), __( '<b>%</b> Replies', 'twentyeleven' ) ); ?>
+								<?php comments_popup_link( '<span class="leave-reply">' . __( 'Leave a reply', 'basket' ) . '</span>', __( '<b>1</b> Reply', 'basket' ), __( '<b>%</b> Replies', 'basket' ) ); ?>
 							</span>
 						</li>
 

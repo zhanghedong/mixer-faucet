@@ -11,39 +11,70 @@
  * @package WordPress
  * @subpackage Twenty_Eleven
  */
-
+global $images_meta_key,$description_value,$showcase_cat_id;
 get_header(); ?>
+		<div id="primary" class="primary">
+			<div id="content" role="main" class="content">
+<div class="aboutus">
+ <div class="banner">
+  <div class="slide"><img src="<?php echo get_template_directory_uri(); ?>/images/banner/aboutus_1.jpg" alt="bes" id="img_player" /></div>
+<script type="text/javascript">
+Basket.imgSrc =  ["<?php echo get_template_directory_uri(); ?>/images/banner/aboutus_1.jpg", "<?php echo get_template_directory_uri(); ?>/images/banner/aboutus_2.jpg", "<?php echo get_template_directory_uri(); ?>/images/banner/aboutus_3.jpg"];
 
-		<div id="primary">
-			<div id="content" role="main">
 
-			<?php if ( have_posts() ) : ?>
+</script>
+   <p class="switch" id="div_switch"><a href="#" class="active" data-index="0">1</a><a href="#" data-index="1">2</a><a href="#" data-index="2">3</a></p>
+ </div>
+<div class="desc">
+<?php
+$aboutus_id = get_id_by_slug('aboutus');
+echo get_post_meta($aboutus_id, 'about_me_excerpt', true);
+?>
+<p><a href="#"><a href="<?php echo get_page_link_by_slug('aboutus'); ?>">Read more</a></a></p>
 
-				<?php twentyeleven_content_nav( 'nav-above' ); ?>
 
+<div class="contact"> 
+<a title="Click to send a message" class="button-contact-now" target="_blank" href="<?php echo get_page_link_by_slug('contacts'); ?>" rel="nofollow"></a>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+			<?php 
+
+$showcase_cat_name = get_cat_name($showcase_cat_id);
+$query = new WP_Query( array ( 'meta_key' => $imagesMetaKey, 'cat' => $showcase_cat_id , 'showposts' => 20 ) );
+//var_dump ($query);//查看sql
+if ( $query->have_posts() ) : ?>
 				<?php /* Start the Loop */ ?>
-				<?php while ( have_posts() ) : the_post(); ?>
-
-					<?php get_template_part( 'content', get_post_format() ); ?>
-
+				<div class="product-ct">
+				<h2 class="title-nav"><a class="more" href="<?php echo get_category_link( $showcase_cat_id ); ?>">See more</a><?php echo $showcase_cat_name;?></h2>
+                                  <ul class="product-list">
+				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+					<?php get_template_part( 'content-product', get_post_format() ); ?>
 				<?php endwhile; ?>
-
-				<?php twentyeleven_content_nav( 'nav-below' ); ?>
-
-			<?php else : ?>
-
-				<article id="post-0" class="post no-results not-found">
-					<header class="entry-header">
-						<h1 class="entry-title"><?php _e( 'Nothing Found', 'twentyeleven' ); ?></h1>
-					</header><!-- .entry-header -->
-
-					<div class="entry-content">
-						<p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'twentyeleven' ); ?></p>
-						<?php get_search_form(); ?>
-					</div><!-- .entry-content -->
-				</article><!-- #post-0 -->
-
+                                  </ul>
+<div class="clear"></div>
+                                </div>
 			<?php endif; ?>
+
+<?php
+$query = new WP_Query( array ( 'showposts' => 8, 'orderby' => 'post_modified', 'order' => 'desc'  ) );
+//var_dump ($query);
+if ( $query->have_posts() ) : ?>
+				<?php /* Start the Loop */ ?>
+				<div class="product-ct">
+				<h2 class="title-nav">New Products</h2>
+                                  <ul class="product-list">
+				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+					<?php get_template_part( 'content-product', get_post_format() ); ?>
+				<?php endwhile; ?>
+                                  </ul>
+<div class="clear"></div>
+                                </div>
+			<?php endif; ?>
+
+
+
 
 			</div><!-- #content -->
 		</div><!-- #primary -->
