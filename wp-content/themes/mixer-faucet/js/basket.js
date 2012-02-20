@@ -108,7 +108,7 @@
         if ($('#sub_menu_ct').length == 0) {
             var h = '<div id="sub_menu_ct"></div>';
             $s.append(h);
-            $('#sub_menu_ct').append($('#mycategoryorder-3').html());
+            $('#sub_menu_ct').append($('#mycategoryorder-2').html());
             $('#sub_menu_ct *').attr('id', '');
         }
         $('#sub_menu_ct').show();

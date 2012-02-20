@@ -190,7 +190,7 @@ footer{clear:both}
 /*pub*/
 .clear{clear:both}
 .hide{display:none;}
-#submit,.btn-1{height:27px; line-height:27px;  font-weight:700; width:80px; text-align:center;background:url(images/btn_bg.gif) repeat-x; border:0;border-left:1px solid #F29722; border-right:1px solid #F29722; color:#98380c; cursor:pointer}
+#submit,.btn-1{height:27px; line-height:27px;  font-weight:700; width:80px; text-align:center;background:url(images/btn_bg.gif) repeat-x; border:0;border-left:1px solid #227cf1; border-right:1px solid #227cf1; color:#111; cursor:pointer}
 /*
  *layout
  * */
